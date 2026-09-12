@@ -1,27 +1,31 @@
-const searchInput = document.getElementById("searchInput");
+document.addEventListener("DOMContentLoaded", function () {
 
-searchInput.addEventListener("input", function () {
-
-    const searchText = this.value.toLowerCase().trim();
-
+    const searchInput = document.getElementById("searchInput");
     const products = document.querySelectorAll(".product-card");
 
-    products.forEach(function (product) {
+    if (!searchInput) {
+        return;
+    }
 
-        const productName =
-            product.querySelector("h3")?.textContent.toLowerCase() || "";
+    searchInput.addEventListener("input", function () {
 
-        const productDescription =
-            product.querySelector(".product-description")?.textContent.toLowerCase() || "";
+        const searchText = this.value
+            .trim()
+            .toLowerCase();
 
-        if (
-            productName.includes(searchText) ||
-            productDescription.includes(searchText)
-        ) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
+        products.forEach(function (product) {
+
+            const productText = product
+                .textContent
+                .toLowerCase();
+
+            if (productText.includes(searchText)) {
+                product.style.display = "";
+            } else {
+                product.style.display = "none";
+            }
+
+        });
 
     });
 

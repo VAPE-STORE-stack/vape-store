@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+
         /* =========================
            Search Box
         ========================== */
@@ -19,6 +20,7 @@
         .search-box {
             display: flex;
             align-items: center;
+            gap: 5px;
             margin-right: 15px;
         }
 
@@ -31,7 +33,6 @@
             color: white;
             outline: none;
             font-size: 14px;
-            transition: 0.3s;
         }
 
         .search-box input::placeholder {
@@ -40,7 +41,23 @@
 
         .search-box input:focus {
             border-color: #25d366;
-            box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+        }
+
+        .search-button {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: #25d366;
+            color: #000;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .search-button:hover {
+            transform: scale(1.08);
         }
 
         @media (max-width: 768px) {
@@ -62,11 +79,13 @@
             }
 
         }
+
     </style>
 
 </head>
 
 <body>
+
 
     <!-- =========================
          Header
@@ -102,7 +121,11 @@
 
         </nav>
 
-        <!-- Search -->
+
+        <!-- =========================
+             Search
+        ========================== -->
+
         <div class="search-box">
 
             <input
@@ -110,6 +133,13 @@
                 id="searchInput"
                 placeholder="ابحث عن منتج..."
                 autocomplete="off">
+
+            <button
+                type="button"
+                class="search-button"
+                id="searchButton">
+                🔍
+            </button>
 
         </div>
 
@@ -181,7 +211,11 @@
             <div class="product-card">
 
                 <div class="product-image">
-                    <img src="product1.jpg.webp" alt="المنتج الأول">
+
+                    <img
+                        src="product1.jpg.webp"
+                        alt="المنتج الأول">
+
                 </div>
 
                 <div class="product-info">
@@ -220,7 +254,11 @@
             <div class="product-card">
 
                 <div class="product-image">
-                    <img src="product2.jpg.webp" alt="المنتج الثاني">
+
+                    <img
+                        src="product2.jpg.webp"
+                        alt="المنتج الثاني">
+
                 </div>
 
                 <div class="product-info">
@@ -462,7 +500,8 @@
 
                 <div class="product-image">
 
-                    <img src="liquid1.jpg.webp.webp"
+                    <img
+                        src="liquid1.jpg.webp.webp"
                         alt="توباكو">
 
                 </div>
@@ -498,7 +537,8 @@
 
                 <div class="product-image">
 
-                    <img src="liquid2.jpg.webp"
+                    <img
+                        src="liquid2.jpg.webp"
                         alt="اسم الليكود الثاني">
 
                 </div>
@@ -534,7 +574,8 @@
 
                 <div class="product-image">
 
-                    <img src="liquid3.jpg.webp"
+                    <img
+                        src="liquid3.jpg.webp"
                         alt="اسم الليكود الثالث">
 
                 </div>
@@ -570,7 +611,8 @@
 
                 <div class="product-image">
 
-                    <img src="liquid4.jpg.webp"
+                    <img
+                        src="liquid4.jpg.webp"
                         alt="اسم الليكود الرابع">
 
                 </div>
@@ -672,7 +714,7 @@
 
 
     <!-- =========================
-         Search
+         Search JavaScript
     ========================== -->
 
     <script>
@@ -680,27 +722,28 @@
         const searchInput =
             document.getElementById("searchInput");
 
-        searchInput.addEventListener("input", function () {
+        const searchButton =
+            document.getElementById("searchButton");
+
+        const products =
+            document.querySelectorAll(".product-card");
+
+
+        function searchProducts() {
 
             const searchText =
-                this.value.toLowerCase().trim();
+                searchInput.value.trim().toLowerCase();
 
-            const products =
-                document.querySelectorAll(".product-card");
 
-            products.forEach(function (product) {
+            products.forEach(function(product) {
 
-                const productName =
-                    product.querySelector("h3")?.textContent
-                    .toLowerCase() || "";
+                const productText =
+                    product.textContent.toLowerCase();
 
-                const productDescription =
-                    product.querySelector(".product-description")?.textContent
-                    .toLowerCase() || "";
 
                 if (
-                    productName.includes(searchText) ||
-                    productDescription.includes(searchText)
+                    searchText === "" ||
+                    productText.includes(searchText)
                 ) {
 
                     product.style.display = "";
@@ -713,9 +756,47 @@
 
             });
 
-        });
+
+            /* الانتقال لقسم المنتجات بعد البحث */
+
+            if (searchText !== "") {
+
+                document
+                    .getElementById("products")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+
+        }
+
+
+        /* البحث عند الضغط على زر البحث */
+
+        searchButton.addEventListener(
+            "click",
+            searchProducts
+        );
+
+
+        /* البحث عند الضغط على Enter */
+
+        searchInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    searchProducts();
+
+                }
+
+            }
+        );
 
     </script>
+
 
 </body>
 

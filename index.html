@@ -10,6 +10,60 @@
     <title>VAPE STORE</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+           Search Box
+        ========================== */
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .search-box input {
+            width: 180px;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            border-radius: 25px;
+            background: #111;
+            color: white;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .search-box input::placeholder {
+            color: #888;
+        }
+
+        .search-box input:focus {
+            border-color: #25d366;
+            box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+        }
+
+        @media (max-width: 768px) {
+
+            .header {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .search-box {
+                width: 100%;
+                margin-right: 0;
+                order: 3;
+            }
+
+            .search-box input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        }
+    </style>
+
 </head>
 
 <body>
@@ -47,6 +101,17 @@
             </a>
 
         </nav>
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="ابحث عن منتج..."
+                autocomplete="off">
+
+        </div>
 
     </header>
 
@@ -161,20 +226,20 @@
                 <div class="product-info">
 
                     <h3>
-                          فيب
+                        فيب
                     </h3>
 
                     <p class="product-description">
-                        فيب مستورده 
+                        فيب مستورده
                     </p>
 
                     <div class="product-bottom">
 
                         <span class="price">
-                         350
+                            350
                         </span>
 
-                        <a href="https://wa.me/201111326445?text=مرحباً،%20أريد%20طلب%20ريشه%20فيب%"
+                        <a href="#contact"
                             class="whatsapp-button">
                             التفاصيل
                         </a>
@@ -396,7 +461,10 @@
             <div class="product-card">
 
                 <div class="product-image">
-                    <img src="liquid1.jpg.webp.webp" alt="اسم الليكود الأول">
+
+                    <img src="liquid1.jpg.webp.webp"
+                        alt="توباكو">
+
                 </div>
 
                 <div class="product-info">
@@ -429,8 +497,10 @@
             <div class="product-card">
 
                 <div class="product-image">
+
                     <img src="liquid2.jpg.webp"
                         alt="اسم الليكود الثاني">
+
                 </div>
 
                 <div class="product-info">
@@ -463,8 +533,10 @@
             <div class="product-card">
 
                 <div class="product-image">
+
                     <img src="liquid3.jpg.webp"
                         alt="اسم الليكود الثالث">
+
                 </div>
 
                 <div class="product-info">
@@ -497,8 +569,10 @@
             <div class="product-card">
 
                 <div class="product-image">
+
                     <img src="liquid4.jpg.webp"
                         alt="اسم الليكود الرابع">
+
                 </div>
 
                 <div class="product-info">
@@ -572,7 +646,7 @@
             على مزيد من المعلومات، تواصل معنا.
         </p>
 
-        <a href="https://wa.me/201111326445?text"
+        <a href="#contact"
             class="contact-button">
             تواصل معنا
         </a>
@@ -595,6 +669,53 @@
 
 
     <script src="script.js"></script>
+
+
+    <!-- =========================
+         Search
+    ========================== -->
+
+    <script>
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        searchInput.addEventListener("input", function () {
+
+            const searchText =
+                this.value.toLowerCase().trim();
+
+            const products =
+                document.querySelectorAll(".product-card");
+
+            products.forEach(function (product) {
+
+                const productName =
+                    product.querySelector("h3")?.textContent
+                    .toLowerCase() || "";
+
+                const productDescription =
+                    product.querySelector(".product-description")?.textContent
+                    .toLowerCase() || "";
+
+                if (
+                    productName.includes(searchText) ||
+                    productDescription.includes(searchText)
+                ) {
+
+                    product.style.display = "";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+    </script>
 
 </body>
 

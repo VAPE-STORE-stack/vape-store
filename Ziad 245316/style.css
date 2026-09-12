@@ -1,0 +1,686 @@
+/* =========================================
+   VAPE STORE - DARK PREMIUM DESIGN
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+::selection {
+    background: #25d366;
+    color: #000;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(8, 8, 8, 0.92);
+
+    border-bottom: 1px solid #1e1e1e;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #ffffff;
+
+    text-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.navbar a {
+    color: #a8a8a8;
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #25d366;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 100px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(37, 211, 102, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(37, 211, 102, 0.05),
+            transparent 30%
+        ),
+        #080808;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 211, 102, 0.04);
+
+    filter: blur(80px);
+
+    top: -150px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+}
+
+.hero-small {
+    display: inline-block;
+
+    padding: 7px 18px;
+
+    border: 1px solid rgba(37, 211, 102, 0.35);
+
+    border-radius: 50px;
+
+    color: #25d366;
+
+    background: rgba(37, 211, 102, 0.06);
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 65px;
+
+    line-height: 1.15;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    margin-bottom: 25px;
+}
+
+.hero h1::first-line {
+    text-shadow:
+        0 0 25px rgba(255, 255, 255, 0.08);
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: #888;
+
+    font-size: 18px;
+}
+
+.hero-button {
+    display: inline-block;
+
+    padding: 14px 35px;
+
+    background: #25d366;
+
+    color: #050505;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 0 25px rgba(37, 211, 102, 0.15);
+
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 35px rgba(37, 211, 102, 0.25);
+
+    background: #32e978;
+}
+
+
+/* =========================================
+   PRODUCTS SECTION
+========================================= */
+
+.products-section {
+    padding: 100px 7%;
+
+    background: #0b0b0b;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.section-title span {
+    color: #25d366;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+
+    margin: 8px 0;
+
+    color: #ffffff;
+}
+
+.section-title p {
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   PRODUCTS GRID
+========================================= */
+
+.products-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+
+    max-width: 1300px;
+
+    margin: auto;
+}
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.product-card {
+    background: #111111;
+
+    border: 1px solid #202020;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(37, 211, 102, 0.4);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(37, 211, 102, 0.05);
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.product-image {
+    height: 320px;
+
+    background:
+        radial-gradient(
+            circle,
+            #1b1b1b 0%,
+            #101010 45%,
+            #0b0b0b 100%
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.product-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(37, 211, 102, 0.05);
+
+    filter: blur(50px);
+}
+
+.image-placeholder {
+    position: relative;
+
+    z-index: 2;
+
+    color: #555;
+
+    font-size: 16px;
+
+    border: 1px dashed #333;
+
+    padding: 20px 35px;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   PRODUCT INFO
+========================================= */
+
+.product-info {
+    padding: 23px;
+}
+
+.product-info h3 {
+    color: #ffffff;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.product-description {
+    color: #777;
+
+    font-size: 14px;
+
+    min-height: 50px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   PRODUCT BOTTOM
+========================================= */
+
+.product-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #202020;
+}
+
+.price {
+    color: #25d366;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+.whatsapp-button {
+    padding: 9px 16px;
+
+    background: transparent;
+
+    color: #25d366;
+
+    border: 1px solid #25d366;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.whatsapp-button:hover {
+    background: #25d366;
+
+    color: #050505;
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about {
+    padding: 110px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b0b0b,
+            #080808
+        );
+
+    border-top: 1px solid #171717;
+}
+
+.about-content {
+    max-width: 750px;
+
+    margin: auto;
+}
+
+.about span {
+    color: #25d366;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+.about h2 {
+    font-size: 40px;
+
+    margin: 10px 0 18px;
+}
+
+.about p {
+    color: #777;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact {
+    padding: 100px 20px;
+
+    text-align: center;
+
+    background: #0d0d0d;
+
+    border-top: 1px solid #191919;
+}
+
+.contact h2 {
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+.contact p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+.contact-button {
+    display: inline-block;
+
+    padding: 13px 30px;
+
+    border: 1px solid #25d366;
+
+    color: #25d366;
+
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.contact-button:hover {
+    background: #25d366;
+
+    color: #050505;
+
+    box-shadow:
+        0 0 25px rgba(37, 211, 102, 0.2);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 25px 15px;
+
+    text-align: center;
+
+    background: #050505;
+
+    border-top: 1px solid #151515;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+    .header {
+        padding: 0 5%;
+    }
+
+    .products-section {
+        padding: 80px 5%;
+    }
+
+    .products-container {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        min-height: auto;
+
+        padding: 18px 5%;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .navbar {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px 18px;
+    }
+
+    .navbar a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 570px;
+
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .products-section {
+        padding: 70px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .products-container {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .product-image {
+        height: 300px;
+    }
+
+    .about,
+    .contact {
+        padding: 75px 20px;
+    }
+
+    .about h2,
+    .contact h2 {
+        font-size: 30px;
+    }
+
+    .product-bottom {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .price {
+        text-align: center;
+    }
+
+    .whatsapp-button {
+        text-align: center;
+
+        width: 100%;
+    }
+
+}
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
